@@ -12,9 +12,8 @@ public class HTMLManager {
   }
   
   public Queue<HTMLTag> getTags() {
-     Queue<HTMLTag> returnQ = new LinkedList<>();
-  
-     return returnQ;
+
+     return tags;
   }
   
   public String toString() {
