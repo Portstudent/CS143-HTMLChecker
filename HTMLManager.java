@@ -31,7 +31,16 @@ public class HTMLManager {
   }
   
   public void fixHTML() {
-  
+     Stack<HTMLTag> stack = new Stack<>();
+     Queue<HTMLTag> finalQue = new LinkedList<>();
+     while (!tags.isEmpty()) {
+        if (tags.peek().isOpening()) {
+        
+        }
+        stack.push(tags.peek());
+        finalQue.add(tags.remove());
+     }
+     
   }
   
 }
