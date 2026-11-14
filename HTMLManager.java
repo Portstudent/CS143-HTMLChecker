@@ -35,10 +35,17 @@ public class HTMLManager {
      Queue<HTMLTag> finalQue = new LinkedList<>();
      while (!tags.isEmpty()) {
         if (tags.peek().isOpening()) {
-        
+           stack.push(tags.peek());
+           finalQue.add(tags.remove());
+        } else if (tags.peek().isClosing()) {
+           if (tags.peek().matches(stack.peek())) {
+              finalQue.add(tags.remove());
+              stack.pop();
+           }
+        } else if (tags.peek().isSelfClosing()) {
+           finalQue.add(tags.remove());
         }
-        stack.push(tags.peek());
-        finalQue.add(tags.remove());
+        
      }
      
   }
