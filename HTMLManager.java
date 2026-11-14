@@ -42,7 +42,7 @@ public class HTMLManager {
               finalQue.add(tags.remove());
               stack.pop();
            }
-        } else if (tags.peek().isSelfClosing()) {
+        } else if (tags.peek().isSelfClosing() || tags.peek().isComment()) {
            finalQue.add(tags.remove());
         }
         
