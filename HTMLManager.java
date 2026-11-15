@@ -33,8 +33,11 @@ public class HTMLManager {
   public void fixHTML() {
      Stack<HTMLTag> stack = new Stack<>();
      Queue<HTMLTag> finalQue = new LinkedList<>();
+     
      while (!tags.isEmpty()) {
-        if (tags.peek().isOpening()) {
+        if (stack.isEmpty()) {
+           tags.remove();
+        } else if (tags.peek().isOpening()) {
            stack.push(tags.peek());
            finalQue.add(tags.remove());
         } else if (tags.peek().isClosing()) {
@@ -44,14 +47,14 @@ public class HTMLManager {
            } else {
               finalQue.add(stack.pop().getMatching());
            }
-        
         } else if (tags.peek().isSelfClosing() || tags.peek().isComment()) {
            finalQue.add(tags.remove());
-        } else {  
-        
-        }
+        } 
      }
      
+     while (!stack.isEmpty()) {
+        finalQue.add(stack.pop().getMatching());
+     }
   }
   
 }
