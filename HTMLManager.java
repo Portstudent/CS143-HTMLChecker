@@ -55,6 +55,8 @@ public class HTMLManager {
      while (!stack.isEmpty()) {
         finalQue.add(stack.pop().getMatching());
      }
+     
+     tags = finalQue;
   }
   
 }
