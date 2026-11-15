@@ -41,11 +41,15 @@ public class HTMLManager {
            if (tags.peek().matches(stack.peek())) {
               finalQue.add(tags.remove());
               stack.pop();
+           } else {
+              finalQue.add(stack.pop().getMatching());
            }
+        
         } else if (tags.peek().isSelfClosing() || tags.peek().isComment()) {
            finalQue.add(tags.remove());
-        }
+        } else {  
         
+        }
      }
      
   }
